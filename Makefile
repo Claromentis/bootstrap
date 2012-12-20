@@ -1,10 +1,13 @@
 BOOTSTRAP = ./docs/assets/css/bootstrap.css
+BOOTSTRAP_MIN = ./docs/assets/css/bootstrap.min.css
 BOOTSTRAP_LESS = ./less/bootstrap.less
 BOOTSTRAP_RESPONSIVE = ./docs/assets/css/bootstrap-responsive.css
+BOOTSTRAP_RESPONSIVE_MIN = ./docs/assets/css/bootstrap-responsive.min.css
 BOOTSTRAP_RESPONSIVE_LESS = ./less/responsive.less
+HEAD_ROOT = ../head/
 DATE=$(shell date +%I:%M%p)
 CHECK=\033[32m✔\033[39m
-HR=\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#
+HR=---------------------------------------------------------------
 
 
 #
@@ -19,7 +22,9 @@ build:
 	@jshint js/tests/unit/*.js --config js/.jshintrc
 	@echo "Running JSHint on javascript...             ${CHECK} Done"
 	@recess --compile ${BOOTSTRAP_LESS} > ${BOOTSTRAP}
+	@recess --compile ${BOOTSTRAP_LESS} > ${BOOTSTRAP_MIN} --compress
 	@recess --compile ${BOOTSTRAP_RESPONSIVE_LESS} > ${BOOTSTRAP_RESPONSIVE}
+	@recess --compile ${BOOTSTRAP_RESPONSIVE_LESS} > ${BOOTSTRAP_RESPONSIVE_MIN} --compress
 	@echo "Compiling LESS with Recess...               ${CHECK} Done"
 	@node docs/build
 	@cp img/* docs/assets/img/
@@ -37,6 +42,20 @@ build:
 	@echo "${HR}\n"
 	@echo "Thanks for using Bootstrap,"
 	@echo "<3 @mdo and @fat\n"
+
+
+#
+# PUSH MINIFIED FILES BACK TO HEAD
+#
+push:
+	@echo "\n${HR}"
+	@echo "Moving files to Head..."
+	@cp docs/assets/css/*.css ${HEAD_ROOT}/interface_default/css/
+	@cp docs/assets/js/bootstrap.js ${HEAD_ROOT}intranet/js/bootstrap/
+	@cp docs/assets/js/bootstrap.min.js ${HEAD_ROOT}intranet/js/bootstrap/
+	@echo "Files successfully moved at ${DATE}."
+	@echo "${HR}\n"
+
 
 #
 # RUN JSHINT & QUNIT TESTS IN PHANTOMJS
