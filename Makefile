@@ -43,19 +43,13 @@ build:
 	@echo "Thanks for using Bootstrap,"
 	@echo "<3 @mdo and @fat\n"
 
-
-#
-# PUSH MINIFIED FILES BACK TO HEAD
-#
-push:
 	@echo "\n${HR}"
-	@echo "Moving files to Head..."
+	@echo "Copying files to Head..."
 	@cp docs/assets/css/*.css ${HEAD_ROOT}/interface_default/css/
 	@cp docs/assets/js/bootstrap.js ${HEAD_ROOT}intranet/js/bootstrap/
 	@cp docs/assets/js/bootstrap.min.js ${HEAD_ROOT}intranet/js/bootstrap/
 	@echo "Files successfully moved at ${DATE}."
 	@echo "${HR}\n"
-
 
 #
 # RUN JSHINT & QUNIT TESTS IN PHANTOMJS
