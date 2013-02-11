@@ -21,7 +21,6 @@
 
 // Optional: Group multiple button groups together for a toolbar
 .btn-toolbar {
-  font-size: 0; // Hack to remove whitespace that results from using inline-block
   margin-top: @baseLineHeight / 2;
   margin-bottom: @baseLineHeight / 2;
   > .btn + .btn,
@@ -81,12 +80,13 @@
 }
 
 // On hover/focus/active, bring the proper btn to front
-.btn-group > .btn:hover,
+/*.btn-group > .btn:hover,
 .btn-group > .btn:focus,
 .btn-group > .btn:active,
 .btn-group > .btn.active {
   z-index: 2;
 }
+*/
 
 // On active and open, don't show outline
 .btn-group .dropdown-toggle:active,

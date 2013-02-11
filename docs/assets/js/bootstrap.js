@@ -1137,7 +1137,8 @@
         $tip
           .detach()
           .css({ top: 0, left: 0, display: 'block' })
-          .insertAfter(this.$element)
+          //.insertAfter(this.$element)
+          .appendTo('body')
 
         pos = this.getPosition(inside)
 
@@ -1345,8 +1346,8 @@
         , title = this.getTitle()
         , content = this.getContent()
 
-      $tip.find('.popover-title')[this.options.html ? 'html' : 'text'](title)
-      $tip.find('.popover-content')[this.options.html ? 'html' : 'text'](content)
+      $tip.find('.popover-title')[this.options.html ? 'html' : 'html'](title)
+      $tip.find('.popover-content')[this.options.html ? 'html' : 'html'](content)
 
       $tip.removeClass('fade top bottom left right in')
     }

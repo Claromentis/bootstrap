@@ -8,7 +8,7 @@
 
 // Make all forms have space below them
 form {
-  margin: 0 0 @baseLineHeight;
+  margin: 0;
 }
 
 fieldset {
@@ -258,6 +258,7 @@ textarea {
 // -----------
 
 // General classes for quick sizes
+.input-xmini      { width: 30px; }
 .input-mini       { width: 60px; }
 .input-small      { width: 90px; }
 .input-medium     { width: 150px; }
@@ -643,7 +644,7 @@ legend + .control-group {
 .form-horizontal {
   // Increase spacing between groups
   .control-group {
-    margin-bottom: @baseLineHeight;
+    margin-bottom: 6px;
     .clearfix();
   }
   // Float the labels left
